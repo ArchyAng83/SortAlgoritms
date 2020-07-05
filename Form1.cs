@@ -1,4 +1,4 @@
-﻿using Algorithm;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,33 +13,42 @@ namespace SortAlgoritms
 {
     public partial class Form1 : Form
     {
-        AlgorithmBase<int> algorithm = new BubbleSort<int>();
+        List<SortedItem> items = new List<SortedItem>();
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addButton_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(textBox1.Text, out int value))
+            if (int.TryParse(addTextBox.Text, out int value))
             {
-                algorithm.Items.Add(value);
-                label1.Text += " " + value;
+                var item = new SortedItem(value);
+                items.Add(item);
+                panel3.Controls.Add(item.ProgressBar);
+                panel3.Controls.Add(item.Label);
             }
-            textBox1.Text = "";
-            button2.Enabled = true;
+
+            addTextBox.Text = "";
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void fillButton_Click(object sender, EventArgs e)
         {
-            algorithm.Sort();
+            var rnd = new Random();
 
-            foreach (int item in algorithm.Items)
+            if (int.TryParse(fillTextBox.Text, out int value))
             {
-                label2.Text += " " + item;
+                for (int i = 0; i < value; i++)
+                {
+                    var item = new SortedItem(rnd.Next());
+                    items.Add(item);
+                    panel3.Controls.Add(item.ProgressBar);
+                    panel3.Controls.Add(item.Label);
+                }
             }
-            button2.Enabled = false;
+
+            fillTextBox.Text = "";
         }
     }
 }
