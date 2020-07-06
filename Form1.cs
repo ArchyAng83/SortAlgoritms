@@ -1,4 +1,5 @@
 ﻿
+using Algorithm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,7 +26,7 @@ namespace SortAlgoritms
         {
             if (int.TryParse(addTextBox.Text, out int value))
             {
-                var item = new SortedItem(value);
+                var item = new SortedItem(value, items.Count);
                 items.Add(item);
                 panel3.Controls.Add(item.ProgressBar);
                 panel3.Controls.Add(item.Label);
@@ -41,7 +43,7 @@ namespace SortAlgoritms
             {
                 for (int i = 0; i < value; i++)
                 {
-                    var item = new SortedItem(rnd.Next());
+                    var item = new SortedItem(rnd.Next(100), items.Count);
                     items.Add(item);
                     panel3.Controls.Add(item.ProgressBar);
                     panel3.Controls.Add(item.Label);
@@ -50,5 +52,36 @@ namespace SortAlgoritms
 
             fillTextBox.Text = "";
         }
+
+        private void bubbleSortButton_Click(object sender, EventArgs e)
+        {
+            var bubble = new BubbleSort<SortedItem>(items);
+            bubble.CompareEvent += Bubble_CompareEvent;
+            bubble.SwapEvent += Bubble_SwapEvent;
+            bubble.Sort();
+        }
+
+        private void Bubble_SwapEvent(object sender, Tuple<SortedItem, SortedItem> e)
+        {
+            var temp = e.Item1.Value;
+            e.Item1.SetValue(e.Item2.Value);
+            e.Item2.SetValue(temp);
+
+            panel3.Refresh();
+        }
+
+        private void Bubble_CompareEvent(object sender, Tuple<SortedItem, SortedItem> e)
+        {
+            e.Item1.SetColor(Color.Red);
+            e.Item2.SetColor(Color.Green);
+            panel3.Refresh();
+            //Thread.Sleep(100);
+        }
+
+        //private void Swap(SortedItem a, SortedItem b)
+        //{
+        //    a.SetColor(Color.Red);
+        //    b.SetColor(Color.Green);
+        //}
     }
 }

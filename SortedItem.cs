@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,38 +8,64 @@ using System.Windows.Forms;
 
 namespace SortAlgoritms
 {
-    class SortedItem
+    class SortedItem : IComparable
     {
         public VerticalProgressBar.VerticalProgressBar ProgressBar { get; private set; }
-        public Label Label { get;private set; }
-        public int Value { get; set; }
+        public Label Label { get; private set; }
+        public int Value { get; private set; }
 
-        public SortedItem(int value)
+        public SortedItem(int value, int number)
         {
             Value = value;
             ProgressBar = new VerticalProgressBar.VerticalProgressBar();
             Label = new Label();
 
+            var x = number * 25;
+
             ProgressBar.BorderStyle = VerticalProgressBar.BorderStyles.Classic;
             ProgressBar.Color = System.Drawing.Color.Blue;
-            ProgressBar.Location = new System.Drawing.Point(3, 5);
+            ProgressBar.Location = new System.Drawing.Point(x, 5);
             ProgressBar.Maximum = 100;
             ProgressBar.Minimum = 0;
-            ProgressBar.Name = "verticalProgressBar1";
-            ProgressBar.Size = new System.Drawing.Size(12, 120);
+            ProgressBar.Name = "ProgressBar" + number;
+            ProgressBar.Size = new System.Drawing.Size(22, 120);
             ProgressBar.Step = 1;
             ProgressBar.Style = VerticalProgressBar.Styles.Solid;
-            ProgressBar.TabIndex = 0;
+            ProgressBar.TabIndex = number;
             ProgressBar.Value = Value;
             // 
             // label3
             // 
             Label.AutoSize = true;
-            Label.Location = new System.Drawing.Point(3, 128);
-            Label.Name = "label3";
+            Label.Location = new System.Drawing.Point(x, 128);
+            Label.Name = "label" + number;
             Label.Size = new System.Drawing.Size(19, 13);
-            Label.TabIndex = 3;
+            Label.TabIndex = number;
             Label.Text = Value.ToString();
+        }
+
+        public void SetValue(int value)
+        {
+            Value = value;
+            ProgressBar.Value = value;
+            Label.Text = value.ToString();
+        }
+
+        public void SetColor(Color color)
+        {
+            ProgressBar.Color = color;
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is SortedItem item)
+            {
+                return Value.CompareTo(item.Value);
+            }
+            else
+            {
+                throw new ArgumentException($"object is not {nameof(SortedItem)}", nameof(obj));
+            }
         }
     }
 }

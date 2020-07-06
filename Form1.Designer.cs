@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.fillTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.bubbleSortButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -119,14 +120,25 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Location = new System.Drawing.Point(301, 14);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(399, 147);
+            this.panel3.Size = new System.Drawing.Size(478, 147);
             this.panel3.TabIndex = 2;
+            // 
+            // bubbleSortButton
+            // 
+            this.bubbleSortButton.Location = new System.Drawing.Point(12, 182);
+            this.bubbleSortButton.Name = "bubbleSortButton";
+            this.bubbleSortButton.Size = new System.Drawing.Size(75, 23);
+            this.bubbleSortButton.TabIndex = 3;
+            this.bubbleSortButton.Text = "BubbleSort";
+            this.bubbleSortButton.UseVisualStyleBackColor = true;
+            this.bubbleSortButton.Click += new System.EventHandler(this.bubbleSortButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 407);
+            this.ClientSize = new System.Drawing.Size(786, 407);
+            this.Controls.Add(this.bubbleSortButton);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -151,6 +163,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox fillTextBox;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button bubbleSortButton;
     }
 }
 

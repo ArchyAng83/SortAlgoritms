@@ -8,8 +8,17 @@ namespace Algorithm
     {
         public int SwapCount { get; protected set; } = 0;
         public int ComprisonCount { get; protected set; } = 0;
-
         public List<T> Items { get; set; } = new List<T>();
+
+        public event EventHandler<Tuple<T, T>> CompareEvent;
+        public event EventHandler<Tuple<T, T>> SwapEvent;
+
+        public AlgorithmBase(IEnumerable<T> items)
+        {
+            Items.AddRange(items);
+        }
+
+        public AlgorithmBase() { }
 
         protected void Swap(int positionA, int positionB)
         {
@@ -20,6 +29,8 @@ namespace Algorithm
                 Items[positionB] = temp;
 
                 SwapCount++;
+
+                SwapEvent?.Invoke(this, new Tuple<T, T>(Items[positionA], Items[positionB]));
             }
         }
 
@@ -38,6 +49,13 @@ namespace Algorithm
         protected virtual void MakeSort()
         {
             Items.Sort();
+        }
+
+        protected int Compare(T a, T b)
+        {
+            CompareEvent?.Invoke(this, new Tuple<T, T>(a, b));
+            ComprisonCount++;
+            return a.CompareTo(b);
         }
     }
 }
