@@ -13,24 +13,26 @@ namespace SortAlgoritms
         public VerticalProgressBar.VerticalProgressBar ProgressBar { get; private set; }
         public Label Label { get; private set; }
         public int Value { get; private set; }
-        public int Number { get; set; }
+        public int Number { get; private set; }
+        public int StartNumber { get; private set; }
 
         public SortedItem(int value, int number)
         {
             Value = value;
             Number = number;
+            StartNumber = number;
             ProgressBar = new VerticalProgressBar.VerticalProgressBar();
             Label = new Label();
 
             var x = number * 25;
 
             ProgressBar.BorderStyle = VerticalProgressBar.BorderStyles.Classic;
-            ProgressBar.Color = System.Drawing.Color.Blue;
-            ProgressBar.Location = new System.Drawing.Point(x, 5);
+            ProgressBar.Color = Color.Blue;
+            ProgressBar.Location = new Point(x, 5);
             ProgressBar.Maximum = 100;
             ProgressBar.Minimum = 0;
             ProgressBar.Name = "ProgressBar" + number;
-            ProgressBar.Size = new System.Drawing.Size(22, 120);
+            ProgressBar.Size = new Size(22, 120);
             ProgressBar.Step = 1;
             ProgressBar.Style = VerticalProgressBar.Styles.Solid;
             ProgressBar.TabIndex = number;
@@ -39,9 +41,9 @@ namespace SortAlgoritms
             // label3
             // 
             Label.AutoSize = true;
-            Label.Location = new System.Drawing.Point(x, 128);
+            Label.Location = new Point(x, 128);
             Label.Name = "label" + number;
-            Label.Size = new System.Drawing.Size(19, 13);
+            Label.Size = new Size(19, 13);
             Label.TabIndex = number;
             Label.Text = Value.ToString();
         }
@@ -54,6 +56,16 @@ namespace SortAlgoritms
             ProgressBar.Name = "ProgressBar" + number;
             Label.Location = new Point(x, 128);
             Label.Name = "label" + number;
+        }
+
+        public void Refresh()
+        {
+            Number = StartNumber;
+            var x = Number * 25;
+            ProgressBar.Location = new Point(x, 5);
+            ProgressBar.Name = "ProgressBar" + Number;
+            Label.Location = new Point(x, 128);
+            Label.Name = "label" + Number;
         }
 
         public void SetColor(Color color)

@@ -38,6 +38,9 @@
             this.fillTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bubbleSortButton = new System.Windows.Forms.Button();
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.compareLabel = new System.Windows.Forms.Label();
+            this.swapLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -120,7 +123,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Location = new System.Drawing.Point(301, 14);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(478, 147);
+            this.panel3.Size = new System.Drawing.Size(496, 147);
             this.panel3.TabIndex = 2;
             // 
             // bubbleSortButton
@@ -133,11 +136,41 @@
             this.bubbleSortButton.UseVisualStyleBackColor = true;
             this.bubbleSortButton.Click += new System.EventHandler(this.bubbleSortButton_Click);
             // 
+            // timeLabel
+            // 
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Location = new System.Drawing.Point(12, 212);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(44, 13);
+            this.timeLabel.TabIndex = 4;
+            this.timeLabel.Text = "Время:";
+            // 
+            // compareLabel
+            // 
+            this.compareLabel.AutoSize = true;
+            this.compareLabel.Location = new System.Drawing.Point(12, 235);
+            this.compareLabel.Name = "compareLabel";
+            this.compareLabel.Size = new System.Drawing.Size(133, 13);
+            this.compareLabel.TabIndex = 5;
+            this.compareLabel.Text = "Количество сравнений:";
+            // 
+            // swapLabel
+            // 
+            this.swapLabel.AutoSize = true;
+            this.swapLabel.Location = new System.Drawing.Point(10, 257);
+            this.swapLabel.Name = "swapLabel";
+            this.swapLabel.Size = new System.Drawing.Size(123, 13);
+            this.swapLabel.TabIndex = 6;
+            this.swapLabel.Text = "Количество обменов:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 407);
+            this.ClientSize = new System.Drawing.Size(804, 407);
+            this.Controls.Add(this.swapLabel);
+            this.Controls.Add(this.compareLabel);
+            this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.bubbleSortButton);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -149,6 +182,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -164,6 +198,9 @@
         private System.Windows.Forms.TextBox fillTextBox;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button bubbleSortButton;
+        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Label compareLabel;
+        private System.Windows.Forms.Label swapLabel;
     }
 }
 

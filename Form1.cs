@@ -28,13 +28,11 @@ namespace SortAlgoritms
             {
                 var item = new SortedItem(value, items.Count);
                 items.Add(item);
-                panel3.Controls.Add(item.ProgressBar);
-                panel3.Controls.Add(item.Label);
             }
 
-            addTextBox.Text = "";
+            RefreshItems();
 
-            bubbleSortButton.Enabled = true;
+            addTextBox.Text = "";
         }
 
         private void fillButton_Click(object sender, EventArgs e)
@@ -46,24 +44,50 @@ namespace SortAlgoritms
                 for (int i = 0; i < value; i++)
                 {
                     var item = new SortedItem(rnd.Next(100), items.Count);
-                    items.Add(item);
-                    panel3.Controls.Add(item.ProgressBar);
-                    panel3.Controls.Add(item.Label);
+                    items.Add(item);                   
                 }
             }
 
-            fillTextBox.Text = "";
-           
-            bubbleSortButton.Enabled = true;
+            RefreshItems();
+
+            fillTextBox.Text = "";            
+        }
+
+        private void DrawItems(List<SortedItem> items)
+        {
+            panel3.Controls.Clear();
+
+            foreach (var item in items)
+            {
+                panel3.Controls.Add(item.ProgressBar);
+                panel3.Controls.Add(item.Label);
+            }
+
+            panel3.Refresh();
+        }
+
+        private void RefreshItems()
+        {
+            foreach (var item in items)
+            {
+                item.Refresh();
+            }
+
+            DrawItems(items);
         }
 
         private void bubbleSortButton_Click(object sender, EventArgs e)
         {
+            RefreshItems();
+
             var bubble = new BubbleSort<SortedItem>(items);
             bubble.CompareEvent += Bubble_CompareEvent;
             bubble.SwapEvent += Bubble_SwapEvent;
-            bubble.Sort();
-            bubbleSortButton.Enabled = false;
+            var time = bubble.Sort();
+
+            timeLabel.Text = "Время: " + time.Seconds.ToString();
+            compareLabel.Text = "Количество сравнений: " + bubble.ComprisonCount.ToString();
+            swapLabel.Text = "Количество обменов " + bubble.SwapCount.ToString();          
         }
 
         private void Bubble_SwapEvent(object sender, Tuple<SortedItem, SortedItem> e)
@@ -80,13 +104,7 @@ namespace SortAlgoritms
             e.Item1.SetColor(Color.Red);
             e.Item2.SetColor(Color.Green);
             panel3.Refresh();
-            Thread.Sleep(50);
-        }
-
-        //private void Swap(SortedItem a, SortedItem b)
-        //{
-        //    a.SetColor(Color.Red);
-        //    b.SetColor(Color.Green);
-        //}
+            //Thread.Sleep(50);
+        }        
     }
 }
