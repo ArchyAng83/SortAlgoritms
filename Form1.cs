@@ -33,10 +33,12 @@ namespace SortAlgoritms
             }
 
             addTextBox.Text = "";
+
+            bubbleSortButton.Enabled = true;
         }
 
         private void fillButton_Click(object sender, EventArgs e)
-        {
+        {    
             var rnd = new Random();
 
             if (int.TryParse(fillTextBox.Text, out int value))
@@ -51,6 +53,8 @@ namespace SortAlgoritms
             }
 
             fillTextBox.Text = "";
+           
+            bubbleSortButton.Enabled = true;
         }
 
         private void bubbleSortButton_Click(object sender, EventArgs e)
@@ -59,13 +63,14 @@ namespace SortAlgoritms
             bubble.CompareEvent += Bubble_CompareEvent;
             bubble.SwapEvent += Bubble_SwapEvent;
             bubble.Sort();
+            bubbleSortButton.Enabled = false;
         }
 
         private void Bubble_SwapEvent(object sender, Tuple<SortedItem, SortedItem> e)
         {
-            var temp = e.Item1.Value;
-            e.Item1.SetValue(e.Item2.Value);
-            e.Item2.SetValue(temp);
+            var temp = e.Item1.Number;
+            e.Item1.SetPosition(e.Item2.Number);
+            e.Item2.SetPosition(temp);
 
             panel3.Refresh();
         }
@@ -75,7 +80,7 @@ namespace SortAlgoritms
             e.Item1.SetColor(Color.Red);
             e.Item2.SetColor(Color.Green);
             panel3.Refresh();
-            //Thread.Sleep(100);
+            Thread.Sleep(50);
         }
 
         //private void Swap(SortedItem a, SortedItem b)
