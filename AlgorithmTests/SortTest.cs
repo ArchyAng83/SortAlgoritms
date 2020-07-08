@@ -21,7 +21,7 @@ namespace Algorithm.Tests
             items.Clear();
             for (int i = 0; i < 10000; i++)
             {
-                items.Add(rnd.Next(0, 100));
+                items.Add(rnd.Next(0, 1000));
             }
 
             sorted.Clear();
@@ -124,7 +124,7 @@ namespace Algorithm.Tests
         {
 
             //arrange
-            var tree = new AlgorithmBase<int>();
+            var tree = new TreeSort<int>();
             tree.Items.AddRange(items);
 
             //act
@@ -134,6 +134,24 @@ namespace Algorithm.Tests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(sorted[i], tree.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void HeapSortTest()
+        {
+
+            //arrange
+            var heap = new HeapSort<int>();
+            heap.Items.AddRange(items);
+
+            //act
+            heap.Sort();
+
+            //assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], heap.Items[i]);
             }
         }
     }
