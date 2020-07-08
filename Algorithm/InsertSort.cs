@@ -8,6 +8,10 @@ namespace Algorithm
 {
     public class InsertSort<T> : AlgorithmBase<T> where T: IComparable
     {
+        public InsertSort(IEnumerable<T> items) : base(items) { }
+
+        public InsertSort() { }
+
         protected override void MakeSort()
         {
             for (int i = 1; i < Items.Count; i++)
