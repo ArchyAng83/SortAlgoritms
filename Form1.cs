@@ -111,6 +111,12 @@ namespace SortAlgoritms
             panel3.Refresh();
         }
 
+        private void BaseSortButton_Click(object sender, EventArgs e)
+        {
+            var bases = new AlgorithmBase<SortedItem>(items);
+            BtnSortClick(bases);
+        }
+
         private void bubbleSortButton_Click(object sender, EventArgs e)
         {
             var bubble = new BubbleSort<SortedItem>(items);
@@ -133,6 +139,12 @@ namespace SortAlgoritms
         {
             var shell = new ShellSort<SortedItem>(items);
             BtnSortClick(shell);
+        }
+
+        private void SelectionSortButton_Click(object sender, EventArgs e)
+        {
+            var selection = new SelectionSort<SortedItem>(items);
+            BtnSortClick(selection);
         }
     }
 }
