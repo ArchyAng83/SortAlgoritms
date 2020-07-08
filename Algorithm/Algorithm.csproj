@@ -47,9 +47,12 @@
     <Compile Include="AlgorithmBase.cs" />
     <Compile Include="BubbleSort.cs" />
     <Compile Include="CocktailSort.cs" />
+    <Compile Include="DataStructers\Node.cs" />
+    <Compile Include="DataStructers\Tree.cs" />
     <Compile Include="InsertSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShellSort.cs" />
+    <Compile Include="TreeSort.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

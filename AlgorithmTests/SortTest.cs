@@ -118,5 +118,23 @@ namespace Algorithm.Tests
                 Assert.AreEqual(sorted[i], bases.Items[i]);
             }
         }
+
+        [TestMethod()]
+        public void TreeSortTest()
+        {
+
+            //arrange
+            var tree = new AlgorithmBase<int>();
+            tree.Items.AddRange(items);
+
+            //act
+            tree.Sort();
+
+            //assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], tree.Items[i]);
+            }
+        }
     }
 }
