@@ -1,5 +1,6 @@
 ﻿
 using Algorithm;
+using Algorithm.DataStructers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,13 +81,20 @@ namespace SortAlgoritms
         {
             RefreshItems();
 
+            for (int i = 0; i < algorithm.Items.Count; i++)
+            {
+                algorithm.Items[i].SetPosition(i);
+            }
+
+            panel3.Refresh();
+
             algorithm.CompareEvent += Algoritm_CompareEvent;
             algorithm.SwapEvent += Algoritm_SwapEvent;
             var time = algorithm.Sort();
 
-            timeLabel.Text = "Время: " + time.Seconds.ToString();
-            compareLabel.Text = "Количество сравнений: " + algorithm.ComprisonCount.ToString();
-            swapLabel.Text = "Количество обменов " + algorithm.SwapCount.ToString();
+            timeLabel.Text = "Время: " + time.Seconds;
+            compareLabel.Text = "Количество сравнений: " + algorithm.ComprisonCount;
+            swapLabel.Text = "Количество обменов " + algorithm.SwapCount;
         }
 
         private void Algoritm_SwapEvent(object sender, Tuple<SortedItem, SortedItem> e)
@@ -111,7 +119,7 @@ namespace SortAlgoritms
             panel3.Refresh();
         }
 
-        private void BaseSortButton_Click(object sender, EventArgs e)
+        private void baseSortButton_Click(object sender, EventArgs e)
         {
             var bases = new AlgorithmBase<SortedItem>(items);
             BtnSortClick(bases);
@@ -141,10 +149,16 @@ namespace SortAlgoritms
             BtnSortClick(shell);
         }
 
-        private void SelectionSortButton_Click(object sender, EventArgs e)
+        private void selectionSortButton_Click(object sender, EventArgs e)
         {
             var selection = new SelectionSort<SortedItem>(items);
             BtnSortClick(selection);
+        }
+
+        private void heapSortButton_Click(object sender, EventArgs e)
+        {
+            var heap = new Heap<SortedItem>(items);
+            BtnSortClick(heap);
         }
     }
 }

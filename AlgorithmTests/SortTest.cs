@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Algorithm.DataStructers;
 
 namespace Algorithm.Tests
 {
@@ -137,13 +138,12 @@ namespace Algorithm.Tests
             }
         }
 
-        [TestMethod()]
+        //[TestMethod()]
         public void HeapSortTest()
         {
 
             //arrange
-            var heap = new HeapSort<int>();
-            heap.Items.AddRange(items);
+            var heap = new Heap<int>(items);
 
             //act
             heap.Sort();
@@ -159,7 +159,6 @@ namespace Algorithm.Tests
         [TestMethod()]
         public void SelectionSortTest()
         {
-
             //arrange
             var selection = new SelectionSort<int>();
             selection.Items.AddRange(items);
@@ -171,6 +170,61 @@ namespace Algorithm.Tests
             for (int i = 0; i < items.Count; i++)
             {
                 Assert.AreEqual(sorted[i], selection.Items[i]);
+            }
+        }
+
+
+        //[TestMethod()]
+        public void GnomeSortTest()
+        {
+
+            //arrange
+            var gnome = new GnomeSort<int>();
+            gnome.Items.AddRange(items);
+
+            //act
+            gnome.Sort();
+
+            //assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], gnome.Items[i]);
+            }
+        }
+
+        //[TestMethod()]
+        public void LsdRadixSortTest()
+        {
+
+            //arrange
+            var lsdRadix = new LsdRadixSort<int>();
+            lsdRadix.Items.AddRange(items);
+
+            //act
+            lsdRadix.Sort();
+
+            //assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], lsdRadix.Items[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void MergeSortTest()
+        {
+
+            //arrange
+            var merge = new MergeSort<int>();
+            merge.Items.AddRange(items);
+
+            //act
+            merge.Sort();
+
+            //assert
+            for (int i = 0; i < items.Count; i++)
+            {
+                Assert.AreEqual(sorted[i], merge.Items[i]);
             }
         }
     }

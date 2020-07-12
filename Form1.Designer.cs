@@ -44,8 +44,9 @@
             this.cocktailSortButton = new System.Windows.Forms.Button();
             this.insertSortButton = new System.Windows.Forms.Button();
             this.shellSortButton = new System.Windows.Forms.Button();
-            this.BaseSortButton = new System.Windows.Forms.Button();
-            this.SelectionSortButton = new System.Windows.Forms.Button();
+            this.baseSortButton = new System.Windows.Forms.Button();
+            this.selectionSortButton = new System.Windows.Forms.Button();
+            this.heapSortButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -198,33 +199,44 @@
             this.shellSortButton.UseVisualStyleBackColor = true;
             this.shellSortButton.Click += new System.EventHandler(this.shellSortButton_Click);
             // 
-            // BaseSortButton
+            // baseSortButton
             // 
-            this.BaseSortButton.Location = new System.Drawing.Point(13, 341);
-            this.BaseSortButton.Name = "BaseSortButton";
-            this.BaseSortButton.Size = new System.Drawing.Size(75, 23);
-            this.BaseSortButton.TabIndex = 10;
-            this.BaseSortButton.Text = "BaseSort";
-            this.BaseSortButton.UseVisualStyleBackColor = true;
-            this.BaseSortButton.Click += new System.EventHandler(this.BaseSortButton_Click);
+            this.baseSortButton.Location = new System.Drawing.Point(13, 341);
+            this.baseSortButton.Name = "baseSortButton";
+            this.baseSortButton.Size = new System.Drawing.Size(75, 23);
+            this.baseSortButton.TabIndex = 10;
+            this.baseSortButton.Text = "BaseSort";
+            this.baseSortButton.UseVisualStyleBackColor = true;
+            this.baseSortButton.Click += new System.EventHandler(this.heapSortButton_Click);
             // 
-            // SelectionSortButton
+            // selectionSortButton
             // 
-            this.SelectionSortButton.Location = new System.Drawing.Point(341, 182);
-            this.SelectionSortButton.Name = "SelectionSortButton";
-            this.SelectionSortButton.Size = new System.Drawing.Size(84, 23);
-            this.SelectionSortButton.TabIndex = 11;
-            this.SelectionSortButton.Text = "SelectionSort";
-            this.SelectionSortButton.UseVisualStyleBackColor = true;
-            this.SelectionSortButton.Click += new System.EventHandler(this.SelectionSortButton_Click);
+            this.selectionSortButton.Location = new System.Drawing.Point(341, 182);
+            this.selectionSortButton.Name = "selectionSortButton";
+            this.selectionSortButton.Size = new System.Drawing.Size(84, 23);
+            this.selectionSortButton.TabIndex = 11;
+            this.selectionSortButton.Text = "SelectionSort";
+            this.selectionSortButton.UseVisualStyleBackColor = true;
+            this.selectionSortButton.Click += new System.EventHandler(this.selectionSortButton_Click);
+            // 
+            // heapSortButton
+            // 
+            this.heapSortButton.Location = new System.Drawing.Point(431, 182);
+            this.heapSortButton.Name = "heapSortButton";
+            this.heapSortButton.Size = new System.Drawing.Size(75, 23);
+            this.heapSortButton.TabIndex = 12;
+            this.heapSortButton.Text = "HeapSort";
+            this.heapSortButton.UseVisualStyleBackColor = true;
+            this.heapSortButton.Click += new System.EventHandler(this.heapSortButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 407);
-            this.Controls.Add(this.SelectionSortButton);
-            this.Controls.Add(this.BaseSortButton);
+            this.Controls.Add(this.heapSortButton);
+            this.Controls.Add(this.selectionSortButton);
+            this.Controls.Add(this.baseSortButton);
             this.Controls.Add(this.shellSortButton);
             this.Controls.Add(this.insertSortButton);
             this.Controls.Add(this.cocktailSortButton);
@@ -264,8 +276,9 @@
         private System.Windows.Forms.Button cocktailSortButton;
         private System.Windows.Forms.Button insertSortButton;
         private System.Windows.Forms.Button shellSortButton;
-        private System.Windows.Forms.Button BaseSortButton;
-        private System.Windows.Forms.Button SelectionSortButton;
+        private System.Windows.Forms.Button baseSortButton;
+        private System.Windows.Forms.Button selectionSortButton;
+        private System.Windows.Forms.Button heapSortButton;
     }
 }
 
